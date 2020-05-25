@@ -1,0 +1,20 @@
+.elements__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(auto, 1fr);
+	grid-gap: 18px 21px;
+	margin: 0;
+	padding: 0;
+}
+
+@media all and (min-width:768px) and (max-width:1023px) {
+	.elements__grid {
+		grid-template-columns: repeat(2, 50%);
+	}
+}
+
+@media all and (min-width:300px) and (max-width:767px) {
+	.elements__grid {
+		grid-template-columns: 1fr;
+	}
+}

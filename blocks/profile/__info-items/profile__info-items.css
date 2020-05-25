@@ -1,0 +1,10 @@
+.profile__info-items {
+	display: flex;
+	align-items: baseline; 
+}
+
+@media all and (min-width:300px) and (max-width:767px) {
+	.profile__info-items {
+		height: auto;
+	}
+}
