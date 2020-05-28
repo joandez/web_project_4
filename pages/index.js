@@ -9,12 +9,6 @@ const saveButton = document.querySelector('.edit-form__save-button');
 let nameInput = document.querySelector('.edit-form__field_name');
 let titleInput = document.querySelector('.edit-form__field_title');
 
-// Open Edit Profile popup  
-function openPopup() { 
-
-	popupElement.classList.add('popup__opened'); 
-} 
-
 // Toggle Popup display
 
 function togglePopup() {   
@@ -26,14 +20,14 @@ function togglePopup() {
 function formSubmitHandler (evt) {
     evt.preventDefault();
 	
-	document.querySelector('.profile__name').textContent = nameInput.value;
-	document.querySelector('.profile__title').textContent = titleInput.value;	
+	profileName.textContent = nameInput.value;
+	profileTitle.textContent = titleInput.value;	
 
 }
 
 // Create event listeners
 
-editButton.addEventListener("click", openPopup);
+editButton.addEventListener("click", togglePopup);
 closeButton.addEventListener('click', togglePopup);
 saveButton.addEventListener('click', togglePopup);
 formElement.addEventListener('submit', formSubmitHandler);
