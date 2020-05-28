@@ -1,6 +1,8 @@
 .profile__info-items {
 	display: flex;
-	align-items: baseline; 
+	align-items: baseline;
+	padding: 0;
+	margin: 0;
 }
 
 @media all and (min-width:300px) and (max-width:767px) {
