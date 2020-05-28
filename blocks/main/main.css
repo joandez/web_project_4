@@ -1,6 +1,6 @@
 .main {
 	width: calc(100% - (2  *  199px));
-	width: 882px;
+	max-width: 882px;
 	margin: auto;
 }
 
