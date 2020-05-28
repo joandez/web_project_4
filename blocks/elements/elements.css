@@ -1,10 +1,8 @@
 @import url('__grid/elements__grid.css');
 @import url('__card/elements__card.css');
-@import url('__image/elements__image.css');
 @import url('__info/elements__info.css');
 @import url('__name/elements__name.css');
 @import url('__like-button/elements__like-button.css');
-@import url("__heart-icon/elements__heart-icon.css");
 
 .elements {
 	margin: 50px auto 45px;
