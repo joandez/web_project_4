@@ -1,8 +1,12 @@
 .elements__info {
+	background-color: #fff;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin: auto;
 	width: calc(100% - (2 * 19px));
 	padding: 25px 19px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
 }
