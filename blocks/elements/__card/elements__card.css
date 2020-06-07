@@ -1,7 +1,4 @@
 .elements__card {
-	background-size: 282px;
-	background-position: top center;
-	background-repeat: no-repeat;
 	border-radius: 10px;
 	overflow: hidden;
 	display: flex;

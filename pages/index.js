@@ -1,33 +1,155 @@
-// Declare variables
-const editButton = document.querySelector('.profile__edit-button');
-const popupElement = document.querySelector('.popup');
-const closeButton = document.querySelector('.popup__close-button');
-const formElement = document.querySelector('.edit-form');
-const profileName = document.querySelector('.profile__name');
-const profileTitle = document.querySelector('.profile__title');
-const saveButton = document.querySelector('.edit-form__save-button');
-let nameInput = document.querySelector('.edit-form__field_name');
-let titleInput = document.querySelector('.edit-form__field_title');
+// Declare "Edit User" modal elements
+	const editButton = document.querySelector('.profile__edit-button');
+	const profilePopup = document.querySelector('.popup__type_profile');
+	const profileCloseButton = profilePopup.querySelector('.popup__close-button');
 
-// Toggle Popup display
+	const profileForm = document.querySelector('.edit-form__type_profile');
+	let nameInput = document.querySelector('.edit-form__field_name');
+	let titleInput = document.querySelector('.edit-form__field_title');
+	const saveButton = document.querySelector('.edit-form__save-button');
+	const profileName = document.querySelector('.profile__name');
+	const profileTitle = document.querySelector('.profile__title');
 
-function togglePopup() {   
-    popupElement.classList.toggle('popup__opened');
-}
+// Declare "New Location" modal elements
+	const addButton = document.querySelector('.profile__add-button');
 
-// Submit form fields to Profile information
+	const locationPopup = document.querySelector('.popup__type_location');
+	const locationCloseButton = locationPopup.querySelector('.popup__close-button');
 
-function formSubmitHandler (evt) {
-    evt.preventDefault();
+	const locationForm = document.querySelector('.edit-form__type_location');
+	let locationNameInput = document.querySelector('.edit-form__field_card-title');
+	let locationLinkInput = document.querySelector('.edit-form__field_card-link');
+
+// Declare "Image Lightbox" modal elements
+	const imageLightboxPopup = document.querySelector('.popup__type_lightbox');
+	const lightboxWrapper = document.querySelector('.popup__image-wrapper');
+	const lightboxCloseButton = lightboxWrapper.querySelector('.popup__close-button');
+
+	const lightboxImg = imageLightboxPopup.querySelector('.popup__lightbox-image');
+	const lightboxCaption = imageLightboxPopup.querySelector('.popup__lightbox-caption');
+
+// Find Card template
+	const cardTemplate = document.querySelector('.card-template').content.querySelector('.elements__card');
+
+
+// Declare data for initial Location cards
+
+	const initialCards = [
+		{
+        name: "Yosemite Valley",
+        link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+		},
+		{
+        name: "Lake Louise",
+        link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+		},
+		{
+        name: "Bald Mountains",
+        link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+		},
+    	{
+        name: "Latemar",
+        link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+		},
+    	{
+        name: "Vanois National Park",
+        link: "https://code.s3.yandex.net/web-code/vanois.jpg"
+		},
+		{
+        name: "Lago di Braies",
+        link: "https://code.s3.yandex.net/web-code/lago.jpg"
+		}
+	];
+
+// Create Location cards
+
+	const createCard = (data) => {
+		const cardItem = cardTemplate.cloneNode(true);
 	
-	profileName.textContent = nameInput.value;
-	profileTitle.textContent = titleInput.value;	
+		const cardTitle = cardItem.querySelector('.elements__name');
+		const cardImage = cardItem.querySelector('.elements__image');
+		const likeButton = cardItem.querySelector('.elements__like-button');
+		const trashButton = cardItem.querySelector('.elements__trash-button');
+	
+		cardTitle.textContent = data.name;
+		cardImage.style.backgroundImage = `url('${data.link}')`;
+		cardImage.addEventListener('click', () => {
+			togglePopup(imageLightboxPopup);
+			lightboxImg.src = data.link;
+			lightboxCaption.textContent = data.name;
+		});
+	
+		likeButton.addEventListener('click', (evt) => {
+			evt.target.closest('.elements__like-button').classList.toggle('elements__like-button_state_active');
+		});
+	
+		trashButton.addEventListener('click', (evt) => {
+			evt.target.closest('.elements__card').remove();
+		});
+	
+		return cardItem;
+	}
 
-}
+	const renderCard = (data) => {
+		const elementGrid = document.querySelector('.elements__grid');
+		elementGrid.prepend(createCard(data));
+	}
 
-// Create event listeners
+	initialCards.forEach((data) => {
+		renderCard(data);
+	});
 
-editButton.addEventListener("click", togglePopup);
-closeButton.addEventListener('click', togglePopup);
-saveButton.addEventListener('click', togglePopup);
-formElement.addEventListener('submit', formSubmitHandler);
+// Toggle popup modal display
+	function togglePopup(modal) {
+		modal.classList.toggle('popup__opened');
+	}
+
+
+// Submit "Edit User" form fields to Profile information
+
+	profileForm.addEventListener('submit', function(evt) {
+		evt.preventDefault();
+		
+		profileName.textContent = nameInput.value;
+		profileTitle.textContent = titleInput.value;
+		togglePopup(profilePopup);
+	});
+
+// Submit "New Location" form fields to card data
+
+	locationForm.addEventListener('submit', function(evt) {
+		evt.preventDefault();
+		const data = {
+			name: locationNameInput.value,
+			link: locationLinkInput.value,
+		};
+		
+		const cardInput = createCard(data);
+		renderCard(data);
+		locationForm.reset();
+		togglePopup(locationPopup);
+	});
+
+// Create "Edit User" event listeners
+
+	editButton.addEventListener('click', () => {
+		togglePopup(profilePopup);
+	});
+
+	profileCloseButton.addEventListener('click', () => {
+		togglePopup(profilePopup);
+	});
+
+// Create "New Location" event listeners
+	addButton.addEventListener('click', () => {
+		togglePopup(locationPopup);
+	});
+
+	locationCloseButton.addEventListener('click', () => {
+		togglePopup(locationPopup);
+	});
+
+// Create "Image Lightbox" event listeners
+	lightboxCloseButton.addEventListener('click', () => {
+		togglePopup(imageLightboxPopup);
+	});

@@ -9,3 +9,6 @@
 @import url('../blocks/edit-form/edit-form.css');
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/popup/__opened/popup__opened.css');
+@import url('../blocks/popup/__type/_lightbox/popup__type_lightbox.css');
+@import url('../blocks/popup/__container/_type/_lightbox/popup__container_type_lightbox.css');
+@import url('../blocks/elements/__like-button/_state/_active/elements__like-button_state_active.css');

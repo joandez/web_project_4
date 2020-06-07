@@ -1,3 +1,5 @@
+@import url('_type/_lightbox/popup__container_type_lightbox.css');
+
 .popup__container {
 	background-color: #fff;
 	width: 430px;

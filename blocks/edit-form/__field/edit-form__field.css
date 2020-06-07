@@ -6,3 +6,9 @@
 	font-size: 14px;
 	line-height: 17px;
 }
+
+.edit-form__field::placeholder {
+	font-size: 14px;
+	line-height: 17px;
+	color: #C4C4C4;
+}

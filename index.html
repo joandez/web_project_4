@@ -26,57 +26,54 @@
 		</section>
 		<section class="elements">
 			<ul class="elements__grid">
-				<li class="elements__card" style="background-image: url('images/element__image_yosemite.jpg');">
-					<div class="elements__info">
-						<h2 class="elements__name">Yosemite Valley</h2>
-						<button class="elements__like-button"></button>
-					</div>
-				</li>
-				<li class="elements__card" style="background-image: url('images/element__image_lake-louise.jpg');">
-					<div class="elements__info">
-						<h2 class="elements__name">Lake Louise</h2>
-						<button class="elements__like-button"></button>
-					</div>
-				</li>
-				<li class="elements__card" style="background-image: url('images/element__image_bald-mountains.jpg');">
-					<div class="elements__info">
-						<h2 class="elements__name">Bald Mountains</h2>
-						<button class="elements__like-button"></button>
-					</div>
-				</li>
-				<li class="elements__card" style="background-image: url('images/element__image_latemar.jpg');">
-					<div class="elements__info">
-						<h2 class="elements__name">Latemar</h2>
-						<button class="elements__like-button"></button>
-					</div>
-				</li>
-				<li class="elements__card" style="background-image: url('images/element__image_vanois.jpg');">
-					<div class="elements__info">
-						<h2 class="elements__name">Vanois National Park</h2>
-						<button class="elements__like-button"></button>
-					</div>
-				</li>
-				<li class="elements__card" style="background-image: url('images/element__image_lago-de-braies.jpg');">
-					<div class="elements__info">
-						<h2 class="elements__name">Lago de Braies</h2>
-						<button class="elements__like-button"></button>
-					</div>
-				</li>
 			</ul>
 		</section>
-		<section class="popup">
+		<section class="popup popup__type_profile">
 			<div class="popup__container">
 				<div class="popup__contents">
 					<h2 class="popup__title">Edit profile</h2>
-					<form class="edit-form">
-						<input class="edit-form__field edit-form__field_name" type="text" id="form__profile-name" name="form__profile-name" value="Jacques Cousteau">
-						<input class="edit-form__field edit-form__field_title" type="text" id="form__profile-title" name="form__profile-title" value="Explorer">
+					<form class="edit-form edit-form__type_profile">
+						<input class="edit-form__field edit-form__field_name" type="text" id="form__profile-name" name="form__profile-name" value="Jacques Cousteau" placeholder="Name">
+						<input class="edit-form__field edit-form__field_title" type="text" id="form__profile-title" name="form__profile-title" value="Explorer" placeholder="Title">
 						<input class="edit-form__save-button" type="submit" value="Save">
 					</form>
 				</div>
 				<button class="popup__close-button"></button>
 			</div>
 		</section>
+		<section class="popup popup__type_location">
+			<div class="popup__container">
+				<div class="popup__contents">
+					<h2 class="popup__title">New Location</h2>
+					<form class="edit-form edit-form__type_location">
+						<input class="edit-form__field edit-form__field_card-title" type="text" id="form__card-title" name="form__card-title" placeholder="Title">
+						<input class="edit-form__field edit-form__field_card-link" type="text" id="form__card-link" name="form__card-link" placeholder="Link to Image">
+						<input class="edit-form__save-button" type="submit" value="Create">
+					</form>
+				</div>
+				<button class="popup__close-button"></button>
+			</div>
+		</section>
+		<section class="popup popup__type_lightbox">
+			<div class="popup__container popup__container_type_lightbox">
+				<figure class="popup__image-wrapper">
+					<button class="popup__close-button"></button>
+					<img class="popup__lightbox-image" src="" alt="">
+					<figcaption class="popup__lightbox-caption"></figcaption>
+				</figure>
+			</div>
+		</section>
+		<template class="card-template">
+			<li class="elements__card">
+				<div class="elements__image" style="background-image:url('');">
+				</div>
+				<button class="elements__trash-button"></button>
+				<div class="elements__info">
+					<h2 class="elements__name"></h2>
+					<button class="elements__like-button"></button>
+				</div>
+			</li>
+		</template>
 	</main>
 	<footer class="footer">
 		<p class="footer__copyright">© 2020 Around The U.S.</p>

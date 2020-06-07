@@ -3,6 +3,10 @@
 @import url('__contents/popup__contents.css');
 @import url('__title/popup__title.css');
 @import url('__close-button/popup__close-button.css');
+@import url('__type/_lightbox/popup__type_lightbox.css');
+@import url('__image-wrapper/popup__image-wrapper.css');
+@import url('__lightbox-image/popup__lightbox-image.css');
+@import url('__lightbox-caption/popup_lightbox-caption.css');
 @import url('../edit-form/edit-form.css');
 
 .popup {
@@ -13,5 +17,8 @@
 	top: 0;
 	left: 0;
 	align-items: center;
-	display: none;
+	display: flex;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility .5s, opacity .5s ease;
 }
