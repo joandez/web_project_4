@@ -4,9 +4,8 @@
 	const profileCloseButton = profilePopup.querySelector('.popup__close-button');
 
 	const profileForm = document.querySelector('.edit-form__type_profile');
-	let nameInput = document.querySelector('.edit-form__field_name');
-	let titleInput = document.querySelector('.edit-form__field_title');
-	const saveButton = document.querySelector('.edit-form__save-button');
+	const nameInput = document.querySelector('.edit-form__field_name');
+	const titleInput = document.querySelector('.edit-form__field_title');
 	const profileName = document.querySelector('.profile__name');
 	const profileTitle = document.querySelector('.profile__title');
 
@@ -17,18 +16,19 @@
 	const locationCloseButton = locationPopup.querySelector('.popup__close-button');
 
 	const locationForm = document.querySelector('.edit-form__type_location');
-	let locationNameInput = document.querySelector('.edit-form__field_card-title');
-	let locationLinkInput = document.querySelector('.edit-form__field_card-link');
+	const locationNameInput = document.querySelector('.edit-form__field_card-title');
+	const locationLinkInput = document.querySelector('.edit-form__field_card-link');
 
 // Declare "Image Lightbox" modal elements
 	const imageLightboxPopup = document.querySelector('.popup__type_lightbox');
 	const lightboxWrapper = document.querySelector('.popup__image-wrapper');
-	const lightboxCloseButton = lightboxWrapper.querySelector('.popup__close-button');
+	const lightboxCloseButton = imageLightboxPopup.querySelector('.popup__close-button');
 
 	const lightboxImg = imageLightboxPopup.querySelector('.popup__lightbox-image');
 	const lightboxCaption = imageLightboxPopup.querySelector('.popup__lightbox-caption');
 
-// Find Card template
+// Find Locations grid and Card template
+	const elementGrid = document.querySelector('.elements__grid');
 	const cardTemplate = document.querySelector('.card-template').content.querySelector('.elements__card');
 
 
@@ -61,6 +61,11 @@
 		}
 	];
 
+// Toggle popup modal display
+	function togglePopup(modal) {
+		modal.classList.toggle('popup__opened');
+	}
+
 // Create Location cards
 
 	const createCard = (data) => {
@@ -91,7 +96,6 @@
 	}
 
 	const renderCard = (data) => {
-		const elementGrid = document.querySelector('.elements__grid');
 		elementGrid.prepend(createCard(data));
 	}
 
@@ -99,15 +103,9 @@
 		renderCard(data);
 	});
 
-// Toggle popup modal display
-	function togglePopup(modal) {
-		modal.classList.toggle('popup__opened');
-	}
-
-
 // Submit "Edit User" form fields to Profile information
 
-	profileForm.addEventListener('submit', function(evt) {
+	profileForm.addEventListener('submit', (evt) => {
 		evt.preventDefault();
 		
 		profileName.textContent = nameInput.value;
@@ -117,14 +115,14 @@
 
 // Submit "New Location" form fields to card data
 
-	locationForm.addEventListener('submit', function(evt) {
+	locationForm.addEventListener('submit', (evt) => {
 		evt.preventDefault();
 		const data = {
 			name: locationNameInput.value,
 			link: locationLinkInput.value,
 		};
 		
-		const cardInput = createCard(data);
+		createCard(data);
 		renderCard(data);
 		locationForm.reset();
 		togglePopup(locationPopup);
