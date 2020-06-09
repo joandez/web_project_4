@@ -21,7 +21,6 @@
 
 // Declare "Image Lightbox" modal elements
 	const imageLightboxPopup = document.querySelector('.popup__type_lightbox');
-	const lightboxWrapper = document.querySelector('.popup__image-wrapper');
 	const lightboxCloseButton = imageLightboxPopup.querySelector('.popup__close-button');
 
 	const lightboxImg = imageLightboxPopup.querySelector('.popup__lightbox-image');
@@ -93,11 +92,11 @@
 		});
 	
 		return cardItem;
-	}
+	};
 
 	const renderCard = (data) => {
 		elementGrid.prepend(createCard(data));
-	}
+	};
 
 	initialCards.forEach((data) => {
 		renderCard(data);
