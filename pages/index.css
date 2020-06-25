@@ -12,3 +12,5 @@
 @import url('../blocks/popup/__type/_lightbox/popup__type_lightbox.css');
 @import url('../blocks/popup/__container/_type/_lightbox/popup__container_type_lightbox.css');
 @import url('../blocks/elements/__like-button/_state/_active/elements__like-button_state_active.css');
+@import url('../blocks/edit-form/__save-button/_disabled/edit-form__save-button_disabled.css');
+@import url('../blocks/edit-form/__field/_type/_error/edit-form__field_type_error.css');

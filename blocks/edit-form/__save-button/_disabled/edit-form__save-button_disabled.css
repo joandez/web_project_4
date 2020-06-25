@@ -1,0 +1,13 @@
+.edit-form__save-button_disabled {
+	opacity: .2;
+	border: 1px solid #000;
+	background: #fff;
+	color: #000;
+	box-sizing: border-box;
+	border-radius: 2px;
+}
+
+.edit-form__save-button_disabled:hover {
+	background: #fff;
+	cursor: default;
+}

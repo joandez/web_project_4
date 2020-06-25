@@ -33,9 +33,15 @@
 				<div class="popup__contents">
 					<h2 class="popup__title">Edit profile</h2>
 					<form class="edit-form edit-form__type_profile">
-						<input class="edit-form__field edit-form__field_name" type="text" id="form__profile-name" name="form__profile-name" value="Jacques Cousteau" placeholder="Name">
-						<input class="edit-form__field edit-form__field_title" type="text" id="form__profile-title" name="form__profile-title" value="Explorer" placeholder="Title">
-						<input class="edit-form__save-button" type="submit" value="Save">
+						<input id="profile-name" class="edit-form__field edit-form__field_name" type="text" id="form__profile-name" name="form__profile-name" value="Jacques Cousteau" placeholder="Name" required minlength="2" maxlength="40">
+						
+						<span id="profile-name-error" class="edit-form__error"></span>
+						
+						<input id="profile-title" class="edit-form__field edit-form__field_title" type="text" id="form__profile-title" name="form__profile-title" value="Explorer" placeholder="Title" required minlength="2" maxlength="200">
+						
+						<span id="profile-title-error" class="edit-form__error"></span>
+						
+						<button class="edit-form__save-button" type="submit">Save</button>
 					</form>
 				</div>
 				<button class="popup__close-button"></button>
@@ -46,9 +52,15 @@
 				<div class="popup__contents">
 					<h2 class="popup__title">New Location</h2>
 					<form class="edit-form edit-form__type_location">
-						<input class="edit-form__field edit-form__field_card-title" type="text" id="form__card-title" name="form__card-title" placeholder="Title">
-						<input class="edit-form__field edit-form__field_card-link" type="text" id="form__card-link" name="form__card-link" placeholder="Link to Image">
-						<input class="edit-form__save-button" type="submit" value="Create">
+						<input id="card-title" class="edit-form__field edit-form__field_card-title" type="text" id="form__card-title" name="form__card-title" placeholder="Title" required minlength="1" maxlength="30">
+						
+						<span id="card-title-error" class="edit-form__error"></span>
+						
+						<input id="card-link" class="edit-form__field edit-form__field_card-link" type="url" id="form__card-link" name="form__card-link" placeholder="Link to Image" required>
+						
+						<span id="card-link-error" class="edit-form__error"></span>
+						
+						<button class="edit-form__save-button" type="submit">Create</button>
 					</form>
 				</div>
 				<button class="popup__close-button"></button>
@@ -78,6 +90,7 @@
 	<footer class="footer">
 		<p class="footer__copyright">© 2020 Around The U.S.</p>
 	</footer>
+	<script src="./pages/validate.js"></script>
 	<script src="./pages/index.js"></script>
 </body>
 </html>

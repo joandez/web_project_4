@@ -1,3 +1,6 @@
+// Declare global modal elements
+	const popupOverlays = document.querySelectorAll('.popup');
+
 // Declare "Edit User" modal elements
 	const editButton = document.querySelector('.profile__edit-button');
 	const profilePopup = document.querySelector('.popup__type_profile');
@@ -63,7 +66,8 @@
 // Toggle popup modal display
 	function togglePopup(modal) {
 		modal.classList.toggle('popup__opened');
-	}
+	};
+
 
 // Create Location cards
 
@@ -149,4 +153,22 @@
 // Create "Image Lightbox" event listeners
 	lightboxCloseButton.addEventListener('click', () => {
 		togglePopup(imageLightboxPopup);
+	});
+
+
+// Close each modal when clicking on overlay or pressing esc
+
+	popupOverlays.forEach((popupOverlay) => {
+		popupOverlay.addEventListener('click', function(evt) {
+			if (evt.target === popupOverlay) {
+				togglePopup(evt.target);	
+			}
+		})
+		
+		document.addEventListener('keydown', (evt) => {
+			if (evt.keyCode === 27) {
+				popupOverlay.classList.remove('popup__opened');
+			}
+		})	
+		
 	});
