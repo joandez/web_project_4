@@ -1,10 +1,12 @@
+// Show or hide error messages with class styles
+
 function showErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}) {
 	const error = document.querySelector('#' + input.id + '-error');
 	error.textContent = input.validationMessage;
 	
 	error.classList.add(errorClass);
 	input.classList.add(inputErrorClass);
-};
+}
 
 
 function hideErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}) {
@@ -13,8 +15,9 @@ function hideErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}) {
 	
 	error.classList.remove(errorClass);
 	input.classList.remove(inputErrorClass);
-};
+}
 
+// Check if input fields are valid
 
 function checkInputValidity(input, form, rest){
 	if(input.validity.valid) {
@@ -22,17 +25,23 @@ function checkInputValidity(input, form, rest){
 	} else{
 		showErrorMessage(input, form, rest);
 	}
-};
+}
+
+// Toggle button states based on field validity
 
 function toggleButtonState(inputs, button, {inactiveButtonClass, ...rest}) {
 	const isValid = inputs.every((input) => input.validity.valid)
 	
 	if(isValid) {
 		button.classList.remove(inactiveButtonClass);
+		button.setAttribute('disabled', false);
 	} else{
 		button.classList.add(inactiveButtonClass);
+		button.setAttribute('disabled', true);
 	}
-};
+}
+
+// Enable validation
 
 function enableValidation({formSelector, inputSelector, submitButtonSelector ,...rest}) {
 	const forms = [...document.querySelectorAll(formSelector)];
@@ -52,7 +61,7 @@ function enableValidation({formSelector, inputSelector, submitButtonSelector ,..
 			})
 		})
 	})
-};
+}
 
 enableValidation({
   formSelector: ".edit-form",
