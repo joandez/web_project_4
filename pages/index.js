@@ -126,7 +126,6 @@ locationForm.addEventListener('submit', (evt) => {
 		link: locationLinkInput.value,
 	};
 		
-	createCard(data);
 	renderCard(data);
 	locationForm.reset();
 	togglePopup(locationPopup);
