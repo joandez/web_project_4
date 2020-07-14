@@ -1,5 +1,6 @@
-import {Card, togglePopup} from './Card.js';
+// Import from other module script files
 import {FormValidator} from './FormValidator.js';
+import Card from './Card.js';
 
 // Declare "Edit User" modal elements
 const editButton = document.querySelector('.profile__edit-button');
@@ -45,6 +46,8 @@ const defaultConfig = {
 	errorClass: "edit-form__error_visible"
 };
 
+// Call form validators
+
 const editProfileValidation = new FormValidator(defaultConfig, profileForm);
 const addCardValidation = new FormValidator(defaultConfig, locationForm);
 
@@ -56,19 +59,18 @@ addCardValidation.enableValidation();
 const createCard = data => {
 	const newCard = new Card(data, cardTemplateSelector);
 	elementGrid.prepend(newCard.generateCard());
-};
-
+}
 
 // Declare data for initial Location cards
 
 const initialCards = [
 	{
 		cardTitle: "Yosemite Valley",
-        cardImage: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+		cardImage: "https://code.s3.yandex.net/web-code/yosemite.jpg"
 	},
 	{
 		cardTitle: "Lake Louise",
-        cardImage: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+		cardImage: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
 	},
 	{
 		cardTitle: "Bald Mountains",
@@ -89,10 +91,41 @@ const initialCards = [
 ];
 
 // Render initial Location cards
-
 initialCards.forEach((data) => {
 	createCard(data);
-  })
+});
+
+// Toggle popup modal display
+function togglePopup(modal) {
+	modal.classList.toggle('popup__opened');
+	escKeyListener(modal);	
+}
+
+// Close each modal when clicking on overlay
+
+popupOverlays.forEach((popupOverlay) => {
+	popupOverlay.addEventListener('click', function(evt) {
+		if (evt.target === popupOverlay) {
+			togglePopup(evt.target);	
+		}
+	})
+});
+
+// Close each modal with ESC key
+
+function escKey(evt) {
+  if (evt.keyCode === 27) {
+    togglePopup(document.querySelector('.popup__opened')); 
+  }
+}
+
+function escKeyListener(modal) {
+	if (modal.classList.contains('popup__opened')) {
+		document.addEventListener('keydown', escKey);
+	} else {
+		document.removeEventListener('keydown', escKey);
+	}
+}
 
 // Submit "Edit User" form fields to Profile information
 
