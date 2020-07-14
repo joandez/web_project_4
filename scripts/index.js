@@ -1,6 +1,5 @@
-import {Card} from './Card.js';
+import {Card, togglePopup} from './Card.js';
 import {FormValidator} from './FormValidator.js';
-import {togglePopup} from './togglePopup.js';
 
 // Declare "Edit User" modal elements
 const editButton = document.querySelector('.profile__edit-button');
@@ -25,7 +24,7 @@ const locationLinkInput = document.querySelector('.edit-form__field_card-link');
 
 // Find Locations grid and Card template
 const elementGrid = document.querySelector('.elements__grid');
-const cardTemplateSelector = '#card-template';
+const cardTemplateSelector = document.querySelector('.card-template');
 
 // Declare global modal elements
 const popupOverlays = document.querySelectorAll('.popup');
@@ -54,10 +53,11 @@ addCardValidation.enableValidation();
 
 // Create new card and add to Element Grid
 
-function createCard(data) {
-	const card = new Card(data, '#card-template');
-	return elementGrid.prepend(card.generateCard());
-}
+const createCard = data => {
+	const newCard = new Card(data, cardTemplateSelector);
+	elementGrid.prepend(newCard.generateCard());
+};
+
 
 // Declare data for initial Location cards
 
