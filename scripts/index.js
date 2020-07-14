@@ -25,7 +25,7 @@ const locationLinkInput = document.querySelector('.edit-form__field_card-link');
 
 // Find Locations grid and Card template
 const elementGrid = document.querySelector('.elements__grid');
-const cardTemplateSelector = document.querySelector('.card-template');
+const cardTemplateSelector = '.card-template';
 
 // Declare global modal elements
 const popupOverlays = document.querySelectorAll('.popup');
@@ -54,7 +54,7 @@ editProfileValidation.enableValidation();
 addCardValidation.enableValidation();
 
 // Create new card and add to Element Grid
-const createCard = (data) => {
+const createCard = (data, elementGrid) => {
 	const newCard = new Card(data, cardTemplateSelector);
 	elementGrid.prepend(newCard.generateCard());
 }
@@ -89,7 +89,7 @@ const initialCards = [
 
 // Render initial Location cards
 initialCards.forEach((data) => {
-	createCard(data);
+	createCard(data, elementGrid);
 });
 
 // Toggle popup modal display

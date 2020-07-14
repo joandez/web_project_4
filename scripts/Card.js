@@ -18,9 +18,9 @@ class Card {
   }
 
   	_addEventListeners() {
-		this._cardImage = this._card.querySelector('.elements__image');
-		this._likeButton = this._card.querySelector('.elements__like-button');
-		this._trashButton = this._card.querySelector('.elements__trash-button');
+		this._cardImage = this._cardElements.querySelector('.elements__image');
+		this._likeButton = this._cardElements.querySelector('.elements__like-button');
+		this._trashButton = this._cardElements.querySelector('.elements__trash-button');
 
 		this._cardImage.addEventListener('click', () => {
 			togglePopup(imageLightboxPopup);
@@ -34,7 +34,7 @@ class Card {
 		});
 		
 		this._trashButton.addEventListener('click', (evt) => {
-			this._cardElement.remove();
+			this._cardElements.remove();
 		});
 	  }
 
@@ -46,7 +46,7 @@ class Card {
 		this._cardElements.querySelector('.elements__name').textContent = this._cardTitle;
 
 		this._addEventListeners();	
-		return cardElements;
+		return this._cardElements;
 	  }
 }
 
