@@ -1,7 +1,7 @@
-import {imageLightboxPopup, lightboxImg, lightboxCaption} from "./index.js";
+import {togglePopup, imageLightboxPopup, lightboxImg, lightboxCaption} from "./index.js";
 
 // Create Card class
-export default class Card {
+class Card {
 	constructor(data, cardTemplateSelector) {
 		this._cardTitle = data.cardTitle;
 		this._cardImage = data.cardImage;
@@ -49,3 +49,6 @@ export default class Card {
 		return cardElements;
 	  }
 }
+
+// export
+export {Card};

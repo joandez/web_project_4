@@ -1,6 +1,6 @@
 // Import from other module script files
 import {FormValidator} from './FormValidator.js';
-import Card from './Card.js';
+import {Card} from './Card.js';
 
 // Declare "Edit User" modal elements
 const editButton = document.querySelector('.profile__edit-button');
@@ -47,7 +47,6 @@ const defaultConfig = {
 };
 
 // Call form validators
-
 const editProfileValidation = new FormValidator(defaultConfig, profileForm);
 const addCardValidation = new FormValidator(defaultConfig, locationForm);
 
@@ -55,14 +54,12 @@ editProfileValidation.enableValidation();
 addCardValidation.enableValidation();
 
 // Create new card and add to Element Grid
-
-const createCard = data => {
+const createCard = (data) => {
 	const newCard = new Card(data, cardTemplateSelector);
 	elementGrid.prepend(newCard.generateCard());
 }
 
 // Declare data for initial Location cards
-
 const initialCards = [
 	{
 		cardTitle: "Yosemite Valley",
