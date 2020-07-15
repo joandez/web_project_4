@@ -1,3 +1,4 @@
+// Create FormValidator class
 class FormValidator {
     constructor(settings, formElement) {
         this._inputSelector = settings.inputSelector;
@@ -9,7 +10,7 @@ class FormValidator {
         this._formElement = formElement;
     }
 
-    _showErrorMessage(input, errorMessage) {
+    _showErrorMessage(input) {
         const error = this._formElement.querySelector('#' + input.id + '-error');
         input.classList.add(this._inputErrorClass);
         error.textContent = input.validationMessage;
@@ -25,15 +26,15 @@ class FormValidator {
         error.textContent = '';
     }
 
-    _checkInputValidity(input, form) {
+    _checkInputValidity(input) {
         if(input.validity.valid) {
-            hideErrorMessage(input, form);
+            this._hideErrorMessage(input);
         } else{
-            showErrorMessage(input, form);
+            this._showErrorMessage(input);
         }
     }
 
-    _toggleButtonState(inputs, button, inactiveButtonClass) {
+    _toggleButtonState(inputs, button) {
         const isValid = inputs.every((input) => input.validity.valid)
 	
         if(isValid) {
@@ -57,7 +58,7 @@ class FormValidator {
         })
     }
 
-    enableValidation(inputSelector, submitButtonSelector) {
+    enableValidation() {
         this._formElement.addEventListener('submit', ((evt) => {
 			evt.preventDefault();
         }));
@@ -66,5 +67,5 @@ class FormValidator {
     }	
 }
 
-// export
+// Export to other module script files
 export {FormValidator};

@@ -1,6 +1,7 @@
 // Import from other module script files
 import {FormValidator} from './FormValidator.js';
 import {Card} from './Card.js';
+import {togglePopup} from './utils.js';
 
 // Declare "Edit User" modal elements
 const editButton = document.querySelector('.profile__edit-button');
@@ -26,16 +27,6 @@ const locationLinkInput = document.querySelector('.edit-form__field_card-link');
 // Find Locations grid and Card template
 const elementGrid = document.querySelector('.elements__grid');
 const cardTemplateSelector = '.card-template';
-
-// Declare global modal elements
-const popupOverlays = document.querySelectorAll('.popup');
-
-// Declare "Image Lightbox" modal elements
-const imageLightboxPopup = document.querySelector('.popup__type_lightbox');
-const lightboxCloseButton = imageLightboxPopup.querySelector('.popup__close-button');
-
-const lightboxImg = imageLightboxPopup.querySelector('.popup__lightbox-image');
-const lightboxCaption = imageLightboxPopup.querySelector('.popup__lightbox-caption');
 
 // Define and declare form validators
 const defaultConfig = {
@@ -92,38 +83,6 @@ initialCards.forEach((data) => {
 	createCard(data, elementGrid);
 });
 
-// Toggle popup modal display
-function togglePopup(modal) {
-	modal.classList.toggle('popup__opened');
-	escKeyListener(modal);	
-}
-
-// Close each modal when clicking on overlay
-
-popupOverlays.forEach((popupOverlay) => {
-	popupOverlay.addEventListener('click', function(evt) {
-		if (evt.target === popupOverlay) {
-			togglePopup(evt.target);	
-		}
-	})
-});
-
-// Close each modal with ESC key
-
-function escKey(evt) {
-  if (evt.keyCode === 27) {
-    togglePopup(document.querySelector('.popup__opened')); 
-  }
-}
-
-function escKeyListener(modal) {
-	if (modal.classList.contains('popup__opened')) {
-		document.addEventListener('keydown', escKey);
-	} else {
-		document.removeEventListener('keydown', escKey);
-	}
-}
-
 // Submit "Edit User" form fields to Profile information
 
 profileForm.addEventListener('submit', (evt) => {
@@ -141,11 +100,6 @@ locationForm.addEventListener('submit', (evt) => {
 	createCard({cardTitle:locationNameInput.value, cardImage:locationLinkInput.value});
 	locationForm.reset();
 	togglePopup(locationPopup);
-});
-
-// Create "Image Lightbox" event listeners
-lightboxCloseButton.addEventListener('click', () => {
-	togglePopup(imageLightboxPopup);
 });
 
 // Create "Edit User" event listeners
@@ -166,6 +120,3 @@ addButton.addEventListener('click', () => {
 locationCloseButton.addEventListener('click', () => {
 	togglePopup(locationPopup);
 });
-
-// Export to other script files
-export {togglePopup, imageLightboxPopup, lightboxImg, lightboxCaption, popupOverlays};

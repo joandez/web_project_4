@@ -1,10 +1,11 @@
-import {togglePopup, imageLightboxPopup, lightboxImg, lightboxCaption} from "./index.js";
+// Import from other module script files
+import {imageLightboxPopup, togglePopup} from "./utils.js";
 
 // Create Card class
 class Card {
 	constructor(data, cardTemplateSelector) {
-		this._cardTitle = data.cardTitle;
 		this._cardImage = data.cardImage;
+		this._cardTitle = data.cardTitle;
 
 		this._cardTemplateSelector = cardTemplateSelector;
   	}
@@ -18,37 +19,43 @@ class Card {
   }
 
   	_addEventListeners() {
-		this._cardImage = this._cardElements.querySelector('.elements__image');
-		this._likeButton = this._cardElements.querySelector('.elements__like-button');
-		this._trashButton = this._cardElements.querySelector('.elements__trash-button');
+		const cardImage = this._cardElement.querySelector('.elements__image');
+		const likeButton = this._cardElement.querySelector('.elements__like-button');
+		const trashButton = this._cardElement.querySelector('.elements__trash-button');
+		const lightboxImg = imageLightboxPopup.querySelector('.popup__lightbox-image');
+		const lightboxCaption = imageLightboxPopup.querySelector('.popup__lightbox-caption');
 
-		this._cardImage.addEventListener('click', () => {
-			togglePopup(imageLightboxPopup);
+		likeButton.addEventListener('click', this._handleLikeCard);
+		trashButton.addEventListener('click', this._handleDeleteCard);
+
+		cardImage.addEventListener('click', evt => {
 			lightboxImg.src = this._cardImage;
 			lightboxImg.alt = this._cardTitle;
 			lightboxCaption.textContent = this._cardTitle;
-		});
-		
-		likeButton.addEventListener('click', (evt) => {
-			evt.target.closest('.elements__like-button').classList.toggle('elements__like-button_state_active');
-		});
-		
-		this._trashButton.addEventListener('click', (evt) => {
-			this._cardElements.remove();
-		});
+			togglePopup(imageLightboxPopup);
+		})
+	  }
+
+	  _handleLikeCard(evt) {
+		evt.target.closest('.elements__like-button').classList.toggle('elements__like-button_state_active');
+	  }
+
+	  _handleDeleteCard(evt) {
+		this._cardElement.remove();
 	  }
 
   	generateCard = () => {
-		const cardElements = this._getCardTemplate();
-		this._cardElements = cardElements;	
+		const cardElement = this._getCardTemplate();
+		this._cardElement = cardElement;	
 
-		this._cardElements.querySelector('.elements__image').style.backgroundImage = `url('${this._cardImage}')`;
-		this._cardElements.querySelector('.elements__name').textContent = this._cardTitle;
+		this._cardElement.querySelector('.elements__image').style.backgroundImage = `url('${this._cardImage}')`;
+		this._cardElement.querySelector('.elements__name').textContent = this._cardTitle;
 
 		this._addEventListeners();	
-		return this._cardElements;
+		return this._cardElement;
 	  }
 }
 
-// export
+// Export to other module script files
 export {Card};
+
