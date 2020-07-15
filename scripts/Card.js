@@ -42,6 +42,7 @@ class Card {
 
 	  _handleDeleteCard(evt) {
 		this._cardElement.remove();
+		this._cardElement = null;
 	  }
 
   	generateCard = () => {

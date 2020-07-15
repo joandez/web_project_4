@@ -6,7 +6,7 @@
 @import url('__type/_lightbox/popup__type_lightbox.css');
 @import url('__image-wrapper/popup__image-wrapper.css');
 @import url('__lightbox-image/popup__lightbox-image.css');
-@import url('__lightbox-caption/popup_lightbox-caption.css');
+@import url('__lightbox-caption/popup__lightbox-caption.css');
 @import url('../edit-form/edit-form.css');
 
 .popup {

@@ -45,7 +45,7 @@ editProfileValidation.enableValidation();
 addCardValidation.enableValidation();
 
 // Create new card and add to Element Grid
-const createCard = (data, elementGrid) => {
+const createCard = (data) => {
 	const newCard = new Card(data, cardTemplateSelector);
 	elementGrid.prepend(newCard.generateCard());
 }
