@@ -26,9 +26,12 @@ class Card {
 		const lightboxCaption = imageLightboxPopup.querySelector('.popup__lightbox-caption');
 
 		likeButton.addEventListener('click', this._handleLikeCard);
-		trashButton.addEventListener('click', this._handleDeleteCard);
+		trashButton.addEventListener('click', () => {
+			this._cardElement.remove();
+			this._cardElement = null;
+		});
 
-		cardImage.addEventListener('click', evt => {
+		cardImage.addEventListener('click', () => {
 			lightboxImg.src = this._cardImage;
 			lightboxImg.alt = this._cardTitle;
 			lightboxCaption.textContent = this._cardTitle;
@@ -38,11 +41,6 @@ class Card {
 
 	  _handleLikeCard(evt) {
 		evt.target.closest('.elements__like-button').classList.toggle('elements__like-button_state_active');
-	  }
-
-	  _handleDeleteCard(evt) {
-		this._cardElement.remove();
-		this._cardElement = null;
 	  }
 
   	generateCard = () => {
